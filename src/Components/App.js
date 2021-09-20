@@ -1,4 +1,4 @@
-import { Usuarios } from '../Usuarios/'
+import { Usuarios }  from './Usuarios'
 
 
 function App() {
@@ -9,5 +9,6 @@ function App() {
     </div>
   );
 }
+
 
 export { App, };

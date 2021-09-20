@@ -1,9 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App }  from './App/';
+import { Provider } from 'react-redux';
+import { combineReducers, createStore } from 'redux';
+import { App }  from './Components/App';
+import usuariosReducer from './reducers/usuariosReducer';
+
+
+const store = createStore(
+  usuariosReducer
+);
+
 
 ReactDOM.render(
-    <App />,
+  <Provider store = {store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 
