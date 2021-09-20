@@ -39,7 +39,7 @@ function Usuarios() {
         console.log(cargando);
         setTimeout(()=>{
             dispatch(usersActions.actions.ready());
-        }, 2000); 
+        }, 1000); 
 
         dispatch(fetchUsersData());
         
