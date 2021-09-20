@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { usersActions } from "../reducers/usuariosReducer.js";
+import { usersActions } from "../reducers/usersSlice.js";
 import { Spinner } from "./Spinner.js";
+import { fetchUsersData } from "../reducers/usersActions.js";
 
 const usuarios = [
     {
@@ -39,6 +40,8 @@ function Usuarios() {
         setTimeout(()=>{
             dispatch(usersActions.actions.ready());
         }, 2000); 
+
+        dispatch(fetchUsersData());
         
     }, [])
     

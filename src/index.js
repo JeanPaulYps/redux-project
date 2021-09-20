@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 import { App }  from './Components/App';
-import  { usersActions } from './reducers/usuariosReducer';
+import  { usersActions } from './reducers/usersSlice';
 
 
 const store = configureStore({
