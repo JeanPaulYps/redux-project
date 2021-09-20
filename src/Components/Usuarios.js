@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { usersActions } from "../reducers/usuariosReducer.js";
+import { Spinner } from "./Spinner.js";
 
 const usuarios = [
     {
@@ -66,7 +67,7 @@ function Usuarios() {
             )
             }
             
-            { cargando && <p>Cargando</p> } 
+            { cargando && <Spinner/> } 
             
             { 
             !cargando && usuariosRedux.map( (usuario) => 
