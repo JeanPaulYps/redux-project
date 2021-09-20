@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { darUsuarios } from '../actions/usuariosActions.js'
+import { usersActions } from "../reducers/usuariosReducer.js";
 
 const usuarios = [
     {
@@ -25,17 +25,18 @@ const usuarios = [
 
 
 
-function Usuarios(props) {
-    const usuariosRedux = useSelector( state => state.usuarios);
-    const cargando = useSelector(state => state.cargando)
+function Usuarios() {
+    const usuariosRedux = useSelector( state => state.users.usuarios);
+    const cargando = useSelector( state => state.users.cargando);
     const dispatch = useDispatch();
 
      
     
     useEffect( () => 
     {
+        console.log(cargando);
         setTimeout(()=>{
-            dispatch({type: "listo"});
+            dispatch(usersActions.actions.ready());
         }, 2000); 
         
     }, [])

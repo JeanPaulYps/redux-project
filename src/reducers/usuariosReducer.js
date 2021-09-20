@@ -1,6 +1,8 @@
+import { createSlice } from '@reduxjs/toolkit'
 
-
-const intialState = [
+const intialState = {
+  cargando: true,
+  usuarios:  [
     {
       "id": 1,
       "name": "Leanne Graham",
@@ -19,18 +21,19 @@ const intialState = [
       "username": "Samantha",
       "email": "Nathan@yesenia.net",
     }
-];
-  
-//Reducer
-export default (state = intialState, action) => {
-    switch (action.type)
-    {
-      case "listo": 
-        return { cargando: false, usuarios:intialState }
+  ]
+} ;
 
-      default:
-        console.log(`La accion es ${action.type}`);
-        return { cargando: true, usuarios: []};
-    }
-}
-  
+
+const usersActions = createSlice({
+  name: 'users',
+  initialState: intialState,
+  reducers: {
+    ready (state){
+      state.cargando = false;
+    },
+  },
+})
+
+
+export { usersActions }
