@@ -1,0 +1,33 @@
+html {
+    font-size: 62.5%;
+}
+
+* {
+    --primary-blue: #253a46;
+    --primary-white: #fff;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+.Header {
+    background-color: var(--primary-blue);
+    padding: 20px 20px;
+    color: var(--primary-white);
+}
+
+.Header__Item {
+    list-style: none;
+    display: inline;
+    padding-right: 20px;
+
+}
+
+.Header__Link:link, .Header__Link:visited, .Header__Link:hover, .Header__Link:active {
+    text-decoration: none;
+    color: var(--primary-white);
+}

@@ -1,0 +1,11 @@
+.Header {
+    background-color: var(--primary-blue);
+    padding: 20px 20px;
+    color: var(--primary-white);
+}
+
+.Header__Item {
+    list-style: none;
+    display: inline;
+    padding-right: 20px;
+}

@@ -1,12 +1,30 @@
-import { Usuarios }  from './Usuarios'
-
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
+import { Users }  from './Users';
+import '../Styles/App.css'
+import { Publications } from './Publications';
 
 function App() {
   return (
-    <div>
-      <h2>Hola React</h2>
-      <Usuarios />
-    </div>
+      <BrowserRouter >
+      <header className="Header">
+          <ul>
+              <li className="Header__Item">
+                  <Link to='/' className="Header__Link" >Users </Link>
+              </li>
+              <li className="Header__Item">
+                  <Link to='/' className="Header__Link" >Tasks </Link>
+              </li>
+          </ul>
+      </header>
+      <Switch>
+          <Route exact path="/">
+              <Users/>
+          </Route>
+          <Route path="/userPublications/:key">
+            <Publications/>
+          </Route>
+      </Switch>
+      </BrowserRouter>
   );
 }
 
