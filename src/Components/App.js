@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/">
               <Users/>
           </Route>
-          <Route path="/userPublications/:key">
+          <Route path="/userPublications/:userId">
             <Publications/>
           </Route>
       </Switch>

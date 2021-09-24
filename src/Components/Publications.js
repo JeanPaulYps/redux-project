@@ -4,23 +4,30 @@ import { useParams } from "react-router";
 import { getUserPublications, publicationsSlice } from '../reducers/publicationsSlice';
 import { Spinner } from './Spinner';
 import { Comments } from './Comments';
+import { useState } from "react";
 
 
 function Publications (props) 
 {
     const dispatch = useDispatch();
-    const { key } = useParams();
+    const { userId } = useParams();
     const userPublications = useSelector(state => state.publications.userPublications);
     const loading = useSelector(state => state.publications.loading);
     const error = useSelector(state => state.publications.error);
+
+    const [commentsAreVisible, setCommentsVisibility] = useState(false);
+    const [publicationId, setPublicationId] = useState(0);
     
 
     useEffect(()=>{
-        console.log("Hola")
         dispatch(publicationsSlice.actions.intializeLoading()) ;
-        setTimeout( ()=> dispatch(getUserPublications(key)), 1000) ;
-        console.log("Chao")
-    },[dispatch, key]);
+        setTimeout( ()=> dispatch(getUserPublications(userId)), 1000) ;
+    },[dispatch, userId]);
+
+    const openComments = divPublicationId => () => {
+        setPublicationId(divPublicationId);
+        setCommentsVisibility(true)
+    }
     
     
     return(
@@ -32,9 +39,10 @@ function Publications (props)
             {
             !loading && userPublications.map( publication => {
                     return( 
-                        <div>
+                        <div key= {publication.id} onClick={openComments(publication.id)}>
                             <h2> {publication.title} </h2>
                             <p> {publication.body} </p>
+                            <hr/>
                         </div>
                     )
                 }
@@ -44,7 +52,10 @@ function Publications (props)
 
             { error && <p>{error} </p>}
 
-            <Comments/>
+            {commentsAreVisible && 
+                <Comments setCommentsVisibility={setCommentsVisibility} 
+                            publicationId = {publicationId} />
+            }
             </div>
         </>
     )

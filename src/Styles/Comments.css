@@ -12,20 +12,36 @@
 .Comments__Card {
     width: 300px;
     height: 400px;
-    position: fixed;
-    z-index: 2;
+    position: absolute;
+    z-index: 3;
     background-color: papayawhip;
     top: calc(50% -  200px);
     left: calc(50% - 150px);
-    overflow: scroll;
-    overflow-x: hidden;
-    padding: 30px 20px;
-    /* hide scroll bar for Firefox */
-    scrollbar-width: none; 
+    
+    padding: 30px 20px 0px;
     border-radius: 10px;
+    
 }
 
-.Comments::-webkit-scrollbar {
+.Comments__Container{
+    height: 340px;
+    overflow: scroll;
+    overflow-x: hidden;
+    /* hide scroll bar for Firefox */
+    scrollbar-width: none; 
+}
+
+.Comments__Container::-webkit-scrollbar {
     display: none; /* hide scroll bar for Chrome, Safari, and Opera */
-  }
-  
+}
+
+.Comments__CloseButton{
+    width: 15px;
+    right: 15px;
+    top: 12px;
+    position: absolute;
+}
+
+.Comments__CloseButton:hover {
+    cursor: pointer;
+}

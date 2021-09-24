@@ -4,13 +4,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { App }  from './Components/App';
 import  { usersActions } from './reducers/usersSlice';
-import { publicationsSlice } from './reducers/publicationsSlice'
+import { publicationsSlice } from './reducers/publicationsSlice';
+import { commentsSlice } from './reducers/commentsSlice';
 
 
 const store = configureStore({
   reducer: { 
     users: usersActions.reducer,
-    publications: publicationsSlice.reducer
+    publications: publicationsSlice.reducer,
+    comments: commentsSlice.reducer
   } 
 });
 
