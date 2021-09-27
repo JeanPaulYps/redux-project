@@ -2,6 +2,7 @@ import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import { Users }  from './Users';
 import '../Styles/App.css'
 import { Publications } from './Publications';
+import { Tasks } from './Tasks';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
                   <Link to='/' className="Header__Link" >Users </Link>
               </li>
               <li className="Header__Item">
-                  <Link to='/' className="Header__Link" >Tasks </Link>
+                  <Link to='/tasks' className="Header__Link" >Tasks </Link>
               </li>
           </ul>
       </header>
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/userPublications/:userId">
             <Publications/>
+          </Route>
+          <Route path="/tasks">
+              <Tasks/>
           </Route>
       </Switch>
       </BrowserRouter>

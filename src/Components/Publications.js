@@ -5,6 +5,7 @@ import { getUserPublications, publicationsSlice } from '../reducers/publications
 import { Spinner } from './Spinner';
 import { Comments } from './Comments';
 import { useState } from "react";
+import { Error } from './Error';
 
 
 function Publications (props) 
@@ -37,22 +38,22 @@ function Publications (props)
             {loading && <Spinner/>}
 
             {
-            !loading && userPublications.map( publication => {
-                    return( 
-                        <div key= {publication.id} onClick={openComments(publication.id)}>
-                            <h2> {publication.title} </h2>
-                            <p> {publication.body} </p>
-                            <hr/>
-                        </div>
-                    )
-                }
-
-            )
+                !loading && userPublications.map( publication => {
+                        return( 
+                            <div key= {publication.id} onClick={openComments(publication.id)}>
+                                <h2> {publication.title} </h2>
+                                <p> {publication.body} </p>
+                                <hr/>
+                            </div>
+                        )
+                    }
+                )
             }
 
-            { error && <p>{error} </p>}
+            { error && <Error message = { error }/> }
 
-            {commentsAreVisible && 
+            {
+                commentsAreVisible && 
                 <Comments setCommentsVisibility={setCommentsVisibility} 
                             publicationId = {publicationId} />
             }

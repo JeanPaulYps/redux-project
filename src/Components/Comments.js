@@ -2,6 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../Styles/Comments.css';
 import { getComments } from '../reducers/commentsSlice';
+import { Spinner } from './Spinner';
+import { Error } from './Error';
+
 
 const Comments = ({ setCommentsVisibility, publicationId }) => {
     const dispatch = useDispatch();
@@ -10,14 +13,16 @@ const Comments = ({ setCommentsVisibility, publicationId }) => {
     }, [dispatch, publicationId])
 
     const publicationComments = useSelector(state => state.comments.publicationComments);
+    const loadingComments = useSelector(state => state.comments.loading);
+    const errorCommentsLoading = useSelector(state => state.comments.error);
 
     return (
         <div className="Comments__Modal">
             <div className="Comments__Card">
                 <img className="Comments__CloseButton" src="/closeButton.svg" alt="" onClick={() => setCommentsVisibility(false) }/>
                 <div className="Comments__Container">
-                {console.log(`${publicationId}`)}
-                {
+                { loadingComments && <Spinner/>}                
+                { !loadingComments && 
                     publicationComments.map(comment => {
                         return(
                             <div className="Comment">
@@ -30,6 +35,7 @@ const Comments = ({ setCommentsVisibility, publicationId }) => {
                         )
                     })
                 }
+                { errorCommentsLoading && <Error message={ errorCommentsLoading }/> }
                 </div>
             
             </div>

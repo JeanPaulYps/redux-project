@@ -24,7 +24,7 @@ const getUserPublications = createAsyncThunk(
         }
         catch (err) { 
             console.log(err);
-            return rejectWithValue('Opps there seems to be an error')
+            return rejectWithValue('We have problems loading the data. Please try later')
         }
     }
 )
@@ -53,8 +53,10 @@ const publicationsSlice = createSlice({
             state.loading = true;
             state.error = '';
         },
-        [getUserPublications.rejected]: (state) => {
-            state.error = 'Error los datos no estan disponibles';
+        [getUserPublications.rejected]: (state, action) => {
+            console.log(action);
+            state.loading = false;
+            state.error = action.payload;
         }
     }
 })

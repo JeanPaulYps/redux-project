@@ -4,12 +4,14 @@ import { usersActions } from "../reducers/usersSlice.js";
 import { Spinner } from "./Spinner.js";
 import { fetchUsersData } from "../reducers/usersActions.js";
 import { UsersTable } from "./UsersTable.js";
+import { Error } from './Error';
 
 
 
 function Users() {
     const usuarios = useSelector( state => state.users.usuarios);
     const cargando = useSelector( state => state.users.cargando);
+    const error = useSelector( state => state.users.error);
     const dispatch = useDispatch();
 
      
@@ -32,7 +34,9 @@ function Users() {
         <div className="UserTable">
             { cargando && <Spinner/> } 
 
-            { !cargando && <UsersTable usuarios = {usuarios} /> }
+            { error && <Error message={error}/> }
+
+            { !cargando && !error && <UsersTable usuarios = {usuarios} /> }
         </div>
         
     )

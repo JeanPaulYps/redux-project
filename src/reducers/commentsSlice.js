@@ -19,12 +19,11 @@ const getComments = createAsyncThunk(
                 return response.json();
                 }
             );
-            console.log(publicationComments);
             
             return publicationComments;
         } catch(err){
             console.log(err);
-            return rejectWithValue('Opps there seems to be an error')
+            return rejectWithValue('We have problems loading the data. Please try later')
         }
     }
 )
@@ -50,6 +49,7 @@ const commentsSlice = createSlice({
         },
         [getComments.rejected]: (state) => {
             state.error = 'Error los datos no estan disponibles';
+            state.loading = false;
         }
     }
 })
