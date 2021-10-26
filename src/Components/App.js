@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, HashRouter } from 'react-router-dom';
 import { Users }  from './Users';
 import '../Styles/App.css'
 import { Publications } from './Publications';
@@ -6,7 +6,7 @@ import { Tasks } from './Tasks';
 
 function App() {
   return (
-      <BrowserRouter >
+      <HashRouter basename="/" >
       <header className="Header">
           <ul>
               <li className="Header__Item">
@@ -28,7 +28,7 @@ function App() {
               <Tasks/>
           </Route>
       </Switch>
-      </BrowserRouter>
+      </HashRouter>
   );
 }
 

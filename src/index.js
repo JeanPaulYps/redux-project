@@ -10,6 +10,7 @@ import { tasksSlice } from './reducers/tasksSlice';
 
 
 
+
 const store = configureStore({
   reducer: { 
     users: usersActions.reducer,
@@ -22,9 +23,9 @@ const store = configureStore({
 
 
 ReactDOM.render(
-  <Provider store = {store}>
-    <App />
-  </Provider>,
+    <Provider store = {store}>
+      <App />
+    </Provider>,
   document.getElementById('root')
 );
 

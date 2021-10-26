@@ -19,7 +19,7 @@ const Comments = ({ setCommentsVisibility, publicationId }) => {
     return (
         <div className="Comments__Modal">
             <div className="Comments__Card">
-                <img className="Comments__CloseButton" src="/closeButton.svg" alt="" onClick={() => setCommentsVisibility(false) }/>
+                <img className="Comments__CloseButton" src={`${process.env.PUBLIC_URL}/closeButton.svg`} alt="" onClick={() => setCommentsVisibility(false) }/>
                 <div className="Comments__Container">
                 { loadingComments && <Spinner/>}                
                 { !loadingComments && 
@@ -27,7 +27,7 @@ const Comments = ({ setCommentsVisibility, publicationId }) => {
                         return(
                             <div className="Comment">
                                 <p className="Comment__UserName"> { comment.email} </p>
-                                <p ClassName="Comment__Comment"> 
+                                <p className="Comment__Comment"> 
                                     { comment.body }
                                 </p>
                                 <hr/>

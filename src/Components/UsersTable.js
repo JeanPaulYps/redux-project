@@ -8,12 +8,14 @@ function UsersTable({ usuarios }){
                 <th> Nombre </th>
                 <th> Email </th>
                 <th> Website </th>
+                <th></th>
             </thead>
+            <tbody>
             {
             usuarios.map( (usuario) => 
                 {
                     return(
-                        <tr>
+                        <tr key={usuario.id}>
                             <td> {usuario.name} </td>
                             <td> {usuario.email} </td>  
                             <td> {usuario.website} </td>
@@ -23,10 +25,11 @@ function UsersTable({ usuarios }){
                                 </Link>
                             </td>
                         </tr>
-                    )
-                }
-            )
+                        )
+                    }
+                )
             }
+            </tbody>
         </table>
     );
 }
